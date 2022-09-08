@@ -2,5 +2,13 @@ body {
   font-family: sans-serif;
 }
 
+.input-area {
+  background-color: #c1ffff;
+}
+
+.complete-area {
+  background-color: #c6ffe2;
+}
+
 
 /*# sourceMappingURL=/src.a2b27638.css.map */
