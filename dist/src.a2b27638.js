@@ -197,7 +197,26 @@ require("./styles.css");
 var onClickAdd = function onClickAdd() {
   var inputText = document.getElementById("add-text").value;
   document.getElementById("add-text").value = "";
-  alert(inputText);
+  var li = document.createElement("li");
+  var div = document.createElement("div");
+  div.className = "list-row";
+  var p = document.createElement("p");
+  p.innerText = inputText;
+  var completeButton = document.createElement("button");
+  completeButton.innerText = "完了";
+  completeButton.addEventListener("click", function () {
+    alert("完了");
+  });
+  var deleteButton = document.createElement("button");
+  deleteButton.innerText = "削除";
+  deleteButton.addEventListener("click", function () {
+    alert("削除");
+  });
+  li.appendChild(div);
+  div.appendChild(p);
+  div.appendChild(completeButton);
+  div.appendChild(deleteButton);
+  document.getElementById("incomplete-list").appendChild(li);
 };
 
 document.getElementById("add-button").addEventListener("click", function () {
