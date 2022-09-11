@@ -18,11 +18,12 @@ import "./styles.css";
          alert("完了");
      });
      
-     
+     // 削除ボタン
      const deleteButton = document.createElement("button");
      deleteButton.innerText = "削除";
      deleteButton.addEventListener("click", () => {
-         alert("削除");
+         const deleteTarget = deleteButton.closest("li");
+         document.getElementById("incomplete-list").removeChild(deleteTarget);
      });
      
      li.appendChild(div);
