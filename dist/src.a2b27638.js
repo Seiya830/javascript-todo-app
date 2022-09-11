@@ -206,11 +206,13 @@ var onClickAdd = function onClickAdd() {
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", function () {
     alert("完了");
-  });
+  }); // 削除ボタン
+
   var deleteButton = document.createElement("button");
   deleteButton.innerText = "削除";
   deleteButton.addEventListener("click", function () {
-    alert("削除");
+    var deleteTarget = deleteButton.closest("li");
+    document.getElementById("incomplete-list").removeChild(deleteTarget);
   });
   li.appendChild(div);
   div.appendChild(p);
