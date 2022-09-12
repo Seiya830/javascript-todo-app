@@ -201,16 +201,20 @@ var onClickAdd = function onClickAdd() {
   var div = document.createElement("div");
   div.className = "list-row";
   var p = document.createElement("p");
-  p.innerText = inputText;
+  p.innerText = inputText; // 完了ボタン
+
   var completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", function () {
-    alert("完了");
+    // 押された完了ボタンの親タグ（div）を未完了リストから削除
+    var deleteTarget = deleteButton.closest("li");
+    document.getElementById("incomplete-list").removeChild(deleteTarget);
   }); // 削除ボタン
 
   var deleteButton = document.createElement("button");
   deleteButton.innerText = "削除";
   deleteButton.addEventListener("click", function () {
+    // 押された削除ボタンの親タグ（div）を未完了リストから削除
     var deleteTarget = deleteButton.closest("li");
     document.getElementById("incomplete-list").removeChild(deleteTarget);
   });
@@ -219,6 +223,12 @@ var onClickAdd = function onClickAdd() {
   div.appendChild(completeButton);
   div.appendChild(deleteButton);
   document.getElementById("incomplete-list").appendChild(li);
+}; // 未完了リストから指定の要素を削除
+
+
+var deleteFromIncompleteList = function deleteFromIncompleteList(target) {
+  var deleteTarget = deleteButton.closest("li");
+  document.getElementById("incomplete-list").removeChild(deleteTarget);
 };
 
 document.getElementById("add-button").addEventListener("click", function () {
