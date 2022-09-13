@@ -4,11 +4,14 @@ import "./styles.css";
      const inputText = document.getElementById("add-text").value;
      document.getElementById("add-text").value = "";
      
-     const li =document.createElement("li");
+     // liタグ生成
+     const li = document.createElement("li");
      
+     // divタグ生成
      const div = document.createElement("div");
      div.className = "list-row";
      
+     // pタグ生成
      const p = document.createElement("p");
      p.innerText = inputText;
      
@@ -16,6 +19,11 @@ import "./styles.css";
      const completeButton = document.createElement("button");
      completeButton.innerText = "完了";
      completeButton.addEventListener("click", () => {
+         // 完了リストへ追加
+         const addTarget = completeButton.parentNode;
+         const text = addTarget.firstElementChild.innerText;
+         console.log(text);
+         
          // 押された完了ボタンの親タグ（div）を未完了リストから削除
          deleteFromIncompleteList(deleteButton.closest("li"));
      });
