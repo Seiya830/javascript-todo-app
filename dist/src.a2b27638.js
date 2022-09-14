@@ -196,15 +196,25 @@ require("./styles.css");
 
 var onClickAdd = function onClickAdd() {
   var inputText = document.getElementById("add-text").value;
-  document.getElementById("add-text").value = ""; // liタグ生成
+  document.getElementById("add-text").value = "";
+  createIncompleteList(inputText);
+}; // 未完了リストから指定の要素を削除
 
+
+var deleteFromIncompleteList = function deleteFromIncompleteList(target) {
+  document.getElementById("incomplete-list").removeChild(target);
+}; // 未完了リストに追加する関数
+
+
+var createIncompleteList = function createIncompleteList(text) {
+  // liタグ生成
   var li = document.createElement("li"); // divタグ生成
 
   var div = document.createElement("div");
   div.className = "list-row"; // pタグ生成
 
   var p = document.createElement("p");
-  p.innerText = inputText; // 完了ボタン
+  p.innerText = text; // 完了ボタン
 
   var completeButton = document.createElement("button");
   completeButton.innerText = "完了";
@@ -227,8 +237,11 @@ var onClickAdd = function onClickAdd() {
     backButton.innerText = "戻す";
     backButton.addEventListener("click", function () {
       // 押された戻すボタンを完了リストから削除
-      var deleteTarget = backButton.parentNode;
-      document.getElementById("complete-list").removeChild(deleteTarget);
+      var deleteTarget = backButton.closest("li");
+      document.getElementById("complete-list").removeChild(deleteTarget); // テキスト取得
+
+      var text = backButton.parentNode.firstElementChild.innerText;
+      createIncompleteList(text);
     }); // liタグの子要素に各要素を設定
 
     li.appendChild(addTarget);
@@ -249,11 +262,6 @@ var onClickAdd = function onClickAdd() {
   div.appendChild(completeButton);
   div.appendChild(deleteButton);
   document.getElementById("incomplete-list").appendChild(li);
-}; // 未完了リストから指定の要素を削除
-
-
-var deleteFromIncompleteList = function deleteFromIncompleteList(target) {
-  document.getElementById("incomplete-list").removeChild(target);
 };
 
 document.getElementById("add-button").addEventListener("click", function () {
@@ -287,7 +295,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38529" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34485" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
