@@ -224,7 +224,12 @@ var onClickAdd = function onClickAdd() {
     p.innerText = text; //　buttonタグ生成
 
     var backButton = document.createElement("button");
-    backButton.innerText = "戻す"; // liタグの子要素に各要素を設定
+    backButton.innerText = "戻す";
+    backButton.addEventListener("click", function () {
+      // 押された戻すボタンを完了リストから削除
+      var deleteTarget = backButton.parentNode;
+      document.getElementById("complete-list").removeChild(deleteTarget);
+    }); // liタグの子要素に各要素を設定
 
     li.appendChild(addTarget);
     addTarget.appendChild(p);
@@ -282,7 +287,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33115" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38529" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

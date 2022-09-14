@@ -41,6 +41,11 @@ import "./styles.css";
          //　buttonタグ生成
          const backButton = document.createElement("button");
          backButton.innerText = "戻す";
+         backButton.addEventListener("click", () => {
+            // 押された戻すボタンを完了リストから削除
+            const deleteTarget = backButton.parentNode;
+            document.getElementById("complete-list").removeChild(deleteTarget);
+         });
          
          // liタグの子要素に各要素を設定
          li.appendChild(addTarget);
